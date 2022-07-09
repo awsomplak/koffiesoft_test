@@ -129,7 +129,7 @@ class _OTPPageState extends State<OTPPage> {
         color = Colors.green;
         btnColor = color;
 
-        UserModel user = UserModel.fromJSON(response.data);
+        UserModel user = UserModel.fromJSON(response.data.toJSON());
         await AWLabShrdPref.setIsLoggedIn(true);
         await AWLabShrdPref.setUserData(user.toJSON());
       }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -46,7 +48,6 @@ class _SplashRouteState extends State<SplashRoute> {
     hasInternet = await internetChecker!.hasConnection;
 
     setStatusBarColor(
-      // ignore: use_build_context_synchronously
       Theme.of(context).backgroundColor,
       statusBarIconBrightness: Brightness.dark,
     );
@@ -127,7 +128,7 @@ class _SplashRouteState extends State<SplashRoute> {
     if (permissionsGranted) {
       if (isLoggedIn) {
         AWLabShrdPref.setPageTitle('Dashboard');
-        DashboardRoute().launch(
+        const DashboardRoute().launch(
           context,
           isNewTask: true,
           pageRouteAnimation: PageRouteAnimation.SlideBottomTop,
@@ -137,7 +138,7 @@ class _SplashRouteState extends State<SplashRoute> {
         );
       } else {
         AWLabShrdPref.setPageTitle('Login');
-        LoginRoute().launch(
+        const LoginRoute().launch(
           context,
           isNewTask: true,
           pageRouteAnimation: PageRouteAnimation.SlideBottomTop,

@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:koffiesoft_test/library/rest/api_decode.dart';
+
+import '../../library/log.dart';
 
 class ModelRestData implements APIDecode<ModelRestData> {
   dynamic data;
@@ -11,6 +15,8 @@ class ModelRestData implements APIDecode<ModelRestData> {
   }
 
   ModelRestData.fromJSON(dynamic json) {
-    data = json;
+    data = json is List ? json : json;
   }
+
+  Map<String, dynamic> toJSON() => data as Map<String, dynamic>;
 }

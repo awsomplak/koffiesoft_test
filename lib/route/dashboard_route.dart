@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:koffiesoft_test/config/colors.dart';
 import 'package:koffiesoft_test/config/shrd_pref.dart';
 import 'package:koffiesoft_test/library/awlab_dialog.dart';
+import 'package:koffiesoft_test/model/user_model.dart';
 import 'package:koffiesoft_test/route/login_route.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -15,14 +16,23 @@ class DashboardRoute extends StatefulWidget {
 }
 
 class _DashboardRouteState extends State<DashboardRoute> {
+  UserModel? user;
+  String userName = '';
+
   @override
   void initState() {
+    init();
     super.initState();
   }
 
   @override
   void setState(VoidCallback fn) {
     if (mounted) super.setState(fn);
+  }
+
+  init() async {
+    user = await AWLabShrdPref.getUserData();
+    setState(() => userName = user?.firstName! as String);
   }
 
   void logout() async {
@@ -49,23 +59,23 @@ class _DashboardRouteState extends State<DashboardRoute> {
           backgroundColor: themes.backgroundColor,
           body: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    const Text('Selamat datang \$username'),
-                    25.height,
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: themes.primaryColor,
-                        onPrimary: Colors.white,
-                        textStyle: boldTextStyle(size: 21),
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                      ),
-                      onPressed: logout,
-                      child: const Text('Logout'),
+                Text('Selamat datang $userName'),
+                25.height,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: themes.primaryColor,
+                    onPrimary: Colors.white,
+                    textStyle: boldTextStyle(size: 21),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 14,
+                      horizontal: 14,
                     ),
-                  ],
-                )
+                  ),
+                  onPressed: logout,
+                  child: const Text('Logout'),
+                ),
               ],
             ),
           ),

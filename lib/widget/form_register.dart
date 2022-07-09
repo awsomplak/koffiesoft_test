@@ -1,7 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:koffiesoft_test/library/log.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class FormRegister extends StatefulWidget {

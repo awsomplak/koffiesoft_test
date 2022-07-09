@@ -1,3 +1,4 @@
+import 'package:koffiesoft_test/library/log.dart';
 import 'package:koffiesoft_test/library/rest/api_decode.dart';
 
 class UserModel implements APIDecode<UserModel> {
@@ -25,7 +26,7 @@ class UserModel implements APIDecode<UserModel> {
     group = json['grup'];
     role = json['role'];
     dob = json['tgl_lahir'];
-    gender = json['jenis_kelamin'];
+    gender = json['jenis_kelamin']['kode'];
   }
 
   Map<String, dynamic> toJSON() => {
@@ -37,6 +38,8 @@ class UserModel implements APIDecode<UserModel> {
         "grup": group,
         "role": role,
         "tgl_lahir": dob,
-        "jenis_kelamin": gender,
+        "jenis_kelamin": {
+          'kode': gender
+        },
       };
 }

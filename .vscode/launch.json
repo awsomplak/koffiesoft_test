@@ -9,7 +9,7 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
-            "args": ["--verbose"]
+            // "args": ["--verbose"]
         },
         {
             "name": "koffiesoft_test",

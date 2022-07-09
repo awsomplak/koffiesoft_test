@@ -91,7 +91,7 @@ class APIRequest {
       contentType: Headers.jsonContentType,
       data: {
         'credential': credential,
-        'code': code,
+        'otp': code,
       },
     );
 

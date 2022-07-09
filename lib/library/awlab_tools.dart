@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 class AWLabTools {
   static String getAssets(String fileName) {
@@ -45,9 +45,9 @@ class AWLabTools {
       return true;
     } else if (item.runtimeType == Null) {
       return true;
-    } else if (item == {}) {
-      return true;
+    } else if (item.runtimeType == List) {
+      return item.isEmpty;
     }
-    return item.isEmpty ?? true;
+    return item == null;
   }
 }
